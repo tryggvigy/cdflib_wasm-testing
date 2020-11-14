@@ -14,20 +14,24 @@ def main():
   nobs = 1./ (1. / nobs1 + 1. / nobs2)
 
   crit_upp = stats.t.isf(alpha/2, df)
-  # t_isf = -special.stdtrit(df, alpha)
   print('crit_upp', crit_upp)
+  # t_isf = -special.stdtrit(df, alpha)
+  # print('t_isf', t_isf)
 
   pow_upp = stats.nct._sf(crit_upp, df, effect_size*np.sqrt(nobs))
   print('pow_upp', pow_upp)
+  print('')
 
-  # crit_low = stats.t.ppf(alpha/2, df)
+  crit_low_ppf = stats.t.ppf(alpha/2, df)
+  print('crit_low_ppf', crit_low_ppf)
   crit_low = special.stdtrit(df, alpha/2)
   print('crit_low', crit_low)
 
   pow_low = stats.nct._cdf(crit_low, df, effect_size*np.sqrt(nobs))
   print('pow_low', pow_low)
+  print('')
 
-  pow = pow_upp + stats.nct._cdf(crit_low, df, effect_size*np.sqrt(nobs))
+  pow = pow_upp + pow_low
   print('pow', pow)
 
   # Final
