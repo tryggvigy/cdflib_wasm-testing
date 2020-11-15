@@ -17,6 +17,7 @@ def main():
   print('crit_upp', crit_upp)
   crit_low_ppf = stats.t.ppf(alpha/2, df)
   print('crit_low_ppf', crit_low_ppf)
+  # key
   crit_low = special.stdtrit(df, alpha/2)
   print('crit_low', crit_low)
 
@@ -24,15 +25,6 @@ def main():
   print('pow_upp', pow_upp)
   pow_low = stats.nct._cdf(crit_low, df, effect_size*np.sqrt(nobs))
   print('pow_low', pow_low)
-
-  pow = pow_upp + pow_low
-  print('pow', pow)
-
-  # Final
-  analysis = TTestIndPower()
-  observed_power = analysis.solve_power(effect_size, nobs1=nobs1, alpha=alpha, alternative='larger')
-  print('observed_power', observed_power)
-
 
 if __name__ == "__main__":
     main()

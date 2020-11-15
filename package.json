@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cdflib_wasm": "^1.0.2",
     "cephes": "^1.2.0"
   }
 }
