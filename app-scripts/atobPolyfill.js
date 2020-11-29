@@ -102,3 +102,5 @@ function atobLookup(chr) {
   // Throw exception; should not be hit in tests
   return undefined;
 }
+
+module.exports = atobPolyfill;
